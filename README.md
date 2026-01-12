@@ -1,5 +1,5 @@
-🚀 AI Fitness Coach
-An AI-Powered Personalized Fitness & Nutrition Coaching Platform
+##🚀 AI Fitness Coach
+An AI-Powered Personalized Fitness & Nutrition Coaching Platform ##
 
 AI Fitness Coach is a modern, intelligent fitness application built using FastAPI and Google Gemini AI. It delivers personalized workout routines and nutrition guidance by adapting to individual goals, equipment availability, and continuous user feedback.
 

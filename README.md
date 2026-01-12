@@ -1,59 +1,58 @@
-##🚀 AI Fitness Coach
-An AI-Powered Personalized Fitness & Nutrition Coaching Platform ##
+AI Fitness Coach
 
-AI Fitness Coach is a modern, intelligent fitness application built using FastAPI and Google Gemini AI. It delivers personalized workout routines and nutrition guidance by adapting to individual goals, equipment availability, and continuous user feedback.
+AI Fitness Coach is a personalized, AI-powered fitness and nutrition coaching platform built using FastAPI and Google Gemini AI. The application generates adaptive workout plans and nutrition recommendations based on user goals, available equipment, and continuous feedback.
 
-📌 Project Overview
+Project Overview
 
-The platform functions as a virtual personal trainer, leveraging generative AI to create adaptive fitness experiences. By incorporating a smart feedback loop, the system continuously improves recommendations to ensure long-term effectiveness and user engagement.
+The platform acts as a virtual fitness coach by leveraging generative AI to deliver structured workout routines and intelligent nutrition guidance. A feedback-driven learning loop enables continuous improvement of recommendations, ensuring relevance and long-term effectiveness.
 
-✨ Key Features
-🏋️ Personalized Workout Plans
+Key Features
+Personalized Workout Planning
 
-Generates structured 7-day workout schedules
+Automatically generates 7-day workout plans
 
-Tailored to age, fitness goals, and available equipment
+Customized based on age, fitness goals, and equipment availability
 
-🥗 AI-Driven Nutrition Guidance
+AI-Driven Nutrition Guidance
 
-Provides actionable nutrition tips
+Provides actionable nutrition tips aligned with user objectives
 
-Aligned with individual fitness objectives
+Adjusts suggestions based on individual profiles
 
-🔁 Smart Feedback Loop
+Adaptive Feedback Mechanism
 
-Collects user feedback (Easy / Moderate / Hard)
+Collects workout difficulty feedback (Easy, Moderate, Hard)
 
-Dynamically adjusts future workout intensity
+Dynamically modifies future workout intensity
 
-👤 User Authentication & Profiles
+User Authentication and Profiles
 
-Secure registration and login
+Secure user registration and login
 
-Persistent user profiles for personalized coaching
+Persistent profiles for personalized coaching
 
-⚡ Real-Time AI Coaching
+Real-Time AI Coaching
 
-Powered by Google’s gemini-flash-latest model
+Powered by Google Gemini’s gemini-flash-latest model
 
-Fast, context-aware responses
+Fast and context-aware AI responses
 
-🛠️ Technology Stack
-🔹 Backend
+Technology Stack
+Backend
 
 FastAPI (Python 3.10+)
 
-🔹 Database
+Database
 
 SQLite
 
 SQLAlchemy ORM
 
-🔹 AI Engine
+AI Engine
 
 Google Gemini API (gemini-flash-latest)
 
-🔹 Frontend
+Frontend
 
 HTML
 
@@ -61,43 +60,55 @@ Jinja2 Templates
 
 Vanilla CSS
 
-⚙️ Setup & Execution
-📥 1. Clone the Repository
+Installation and Setup
+1. Clone the Repository
 git clone <repository-url>
 cd ai-fitness-coach
 
-🧪 2. Create & Activate Virtual Environment
+2. Create and Activate Virtual Environment
 python -m venv venv
 .\venv\Scripts\activate   # Windows
 source venv/bin/activate # macOS/Linux
 
-📦 3. Install Dependencies
+3. Install Dependencies
 pip install -r requirements.txt
 
-🔐 4. Environment Configuration
+4. Environment Configuration
 
-Create a .env file in the project root:
+Create a .env file in the root directory:
 
 GOOGLE_API_KEY=your_google_api_key
 SESSION_SECRET_KEY=your_secret_key
 
-▶️ 5. Run the Application
+5. Run the Application
 uvicorn main:app --reload
 
 
-🌐 Access the app at: http://127.0.0.1:8000
+Access the application at:
+http://127.0.0.1:8000
 
-🎯 Use Cases
+Use Cases
 
-AI-powered personal fitness coaching
+AI-powered fitness coaching platforms
 
-Adaptive nutrition recommendation systems
+Personalized nutrition recommendation systems
 
-FastAPI + Generative AI portfolio projects
+FastAPI and Generative AI integration projects
 
-Health & wellness SaaS prototypes
+Health and wellness SaaS prototypes
 
-📜 License
+Future Improvements
+
+Workout progress tracking and analytics
+
+Mobile-responsive frontend
+
+Advanced personalization using historical data
+
+Deployment using Docker and cloud services
+
+License
+
 MIT License
 
-This project is open-source and available under the MIT License.
+This project is licensed under the MIT License.

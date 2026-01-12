@@ -1,51 +1,51 @@
-# AI Fitness Coach
+# **AI Fitness Coach**
 
 AI Fitness Coach is a personalized, AI-powered fitness and nutrition coaching platform built using FastAPI and Google Gemini AI. The application generates adaptive workout plans and nutrition recommendations based on user goals, available equipment, and continuous feedback.
 
-## Project Overview
+## **Project Overview**
 
 The platform acts as a virtual fitness coach by leveraging generative AI to deliver structured workout routines and intelligent nutrition guidance. A feedback-driven learning loop enables continuous improvement of recommendations, ensuring relevance and long-term effectiveness.
 
-## Key Features
+## **Key Features**
 
-### Personalized Workout Planning
+### **Personalized Workout Planning**
 - Automatically generates 7-day workout plans
 - Customized based on age, fitness goals, and equipment availability
 
-### AI-Driven Nutrition Guidance
+### **AI-Driven Nutrition Guidance**
 - Provides actionable nutrition tips aligned with user objectives
 - Adjusts suggestions based on individual profiles
 
-### Adaptive Feedback Mechanism
+### **Adaptive Feedback Mechanism**
 - Collects workout difficulty feedback (Easy, Moderate, Hard)
 - Dynamically modifies future workout intensity
 
-### User Authentication and Profiles
+### **User Authentication and Profiles**
 - Secure user registration and login
 - Persistent profiles for personalized coaching
 
-### Real-Time AI Coaching
+### **Real-Time AI Coaching**
 - Powered by Google Gemini’s `gemini-flash-latest` model
 - Fast and context-aware AI responses
 
-## Technology Stack
+## **Technology Stack**
 
-### Backend
+### **Backend**
 - FastAPI (Python 3.10+)
 
-### Database
+### **Database**
 - SQLite
 - SQLAlchemy ORM
 
-### AI Engine
+### **AI Engine**
 - Google Gemini API (`gemini-flash-latest`)
 
-### Frontend
+### **Frontend**
 - HTML
 - Jinja2 Templates
 - Vanilla CSS
 
-## Installation and Setup
+## **Installation and Setup**
 
 1.  **Clone the Repository**
     ```bash

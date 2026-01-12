@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="nutrition-container" style="padding: 2rem; max-width: 1000px; margin: 0 auto;">
+    <header style="margin-bottom: 3rem; text-align: center;">
+        <h1 style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 0;">Nutrition Strategy</h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem;">Fueling your success, {{
+            user.username }}</p>
+    </header>
+
+    {% if tips %}
+    <div class="tips-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+        {% for tip in tips %}
+        <div class="nutrition-card"
+            style="background: #fff; padding: 1.5rem; border-radius: 20px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); display: flex; align-items: flex-start; gap: 1rem; transition: transform 0.2s ease;">
+            <div class="icon-box"
+                style="background: rgba(0, 118, 255, 0.1); padding: 0.75rem; border-radius: 12px; color: var(--primary); flex-shrink: 0;">
+                {% if "Intensity" in tip %}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v4"></path>
+                    <path d="m16.2 4.8 2 2"></path>
+                    <path d="M12 12v9"></path>
+                    <path d="m16.2 19.2 2-2"></path>
+                    <path d="M22 12h-4"></path>
+                    <path d="m19.2 7.8-2 2"></path>
+                    <path d="m19.2 16.2-2-2"></path>
+                    <path d="M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"></path>
+                    <path d="M4.8 16.2 2 19"></path>
+                    <path d="m4.8 7.8 2 2"></path>
+                    <path d="M6 12H2"></path>
+                </svg>
+                {% else %}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                {% endif %}
+            </div>
+            <div class="tip-content">
+                <p style="margin: 0; font-size: 1.05rem; line-height: 1.5; color: var(--text-color);">{{ tip }}</p>
+                {% if "Intensity" in tip %}
+                <span
+                    style="display: inline-block; margin-top: 0.5rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #ff4757; letter-spacing: 0.05em;">Adaptive
+                    Insight</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div
+        style="text-align: center; padding: 4rem; background: #f8faff; border-radius: 24px; border: 1px dashed var(--border-color);">
+        <p style="color: var(--text-muted); font-size: 1.1rem;">Your AI coach is still analyzing your profile. Check
+            back shortly!</p>
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 4rem; text-align: center;">
+        <a href="/home" class="btn-signin"
+            style="width: auto; display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; background: var(--primary); color: #fff; transition: all 0.2s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 19-7-7 7-7"></path>
+                <path d="M19 12H5"></path>
+            </svg>
+            Back to Dashboard
+        </a>
+    </div>
+</div>
+
+<style>
+    .nutrition-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+    }
+
+    .btn-signin:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 118, 255, 0.2);
+    }
+</style>
+{% endblock %}

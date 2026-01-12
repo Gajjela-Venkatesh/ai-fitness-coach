@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #007bff;
+  --primary-dark: #0056b3;
+  --primary-hover: #0069d9;
+  --secondary: #f4f7f9;
+  --text-dark: #333;
+  --text-muted: #666;
+  --border-color: #dee2e6;
+  --border-radius: 8px;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background: var(--secondary);
+  font-family: var(--font);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Navigation Header */
+nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.85rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Card Styles */
+.auth-card {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+}
+
+.auth-card-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.auth-card-header h2 {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.auth-card-header p {
+  margin: 0.75rem 0 0;
+  opacity: 0.95;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.auth-card-body {
+  padding: 2.5rem 2.5rem;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-dark);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  border: 1px solid #c2c9d1;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.input-wrapper input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+  outline: none;
+}
+
+.form-utils {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.remember-me input {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.forgot-password {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn-signin {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-signin:hover {
+  background: var(--primary-dark);
+}
+
+/* Extras */
+.auth-divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.auth-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  z-index: 1;
+}
+
+.auth-divider span {
+  background: #fff;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.auth-footer {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.auth-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.nav-logo .icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Generic Container */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  border: 1px solid var(--border-color);
+}

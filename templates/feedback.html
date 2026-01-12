@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Workout Feedback</h2>
+<form action="/api/feedback" method="post">
+    <input type="hidden" name="username" value="{{ username }}">
+    <div class="form-group">
+        <label>How was your workout?</label>
+        <textarea name="feedback" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn">Submit Feedback</button>
+</form>
+{% endblock %}

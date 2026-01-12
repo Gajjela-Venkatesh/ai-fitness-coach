@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="auth-card" style="max-width: 600px;">
+        <div class="auth-card-header">
+            <h2>Edit Your Profile</h2>
+            <p>Update your fitness details and preferences</p>
+        </div>
+        <div class="auth-card-body">
+            <form action="/api/update-profile" method="post">
+
+                <div class="form-group">
+                    <label>Username (Read-only)</label>
+                    <div class="input-wrapper">
+                        <i><svg class="icon" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg></i>
+                        <input type="text" name="username" value="{{ user.username }}" readonly
+                            style="background: #f8faff;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <i><svg class="icon" viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg></i>
+                        <input type="password" name="password" value="" placeholder="Enter new password" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Age</label>
+                        <div class="input-wrapper">
+                            <i><svg class="icon" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg></i>
+                            <input type="number" name="age" value="{{ user.age }}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="gender" required style="padding-left: 1rem;">
+                            <option value="Male" {% if user.gender=="Male" %}selected{% endif %}>Male</option>
+                            <option value="Female" {% if user.gender=="Female" %}selected{% endif %}>Female</option>
+                            <option value="Other" {% if user.gender=="Other" %}selected{% endif %}>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Fitness Goal</label>
+                    <select name="goal" required style="padding-left: 1rem;">
+                        <option value="Weight Loss" {% if user.goal=="Weight Loss" %}selected{% endif %}>Weight Loss
+                        </option>
+                        <option value="Muscle Gain" {% if user.goal=="Muscle Gain" %}selected{% endif %}>Muscle Gain
+                        </option>
+                        <option value="Endurance" {% if user.goal=="Endurance" %}selected{% endif %}>Endurance</option>
+                        <option value="General Fitness" {% if user.goal=="General Fitness" %}selected{% endif %}>General
+                            Fitness</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Available Equipment</label>
+                    <div class="input-wrapper">
+                        <i><svg class="icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z">
+                                </path>
+                            </svg></i>
+                        <input type="text" name="equipment" value="{{ user.equipment | join(', ') }}"
+                            placeholder="e.g. dumbbells, resistance bands">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Environment</label>
+                        <select name="environment" required style="padding-left: 1rem;">
+                            <option value="Home" {% if user.environment=="Home" %}selected{% endif %}>Home</option>
+                            <option value="Gym" {% if user.environment=="Gym" %}selected{% endif %}>Gym</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Experience</label>
+                        <select name="experience" required style="padding-left: 1rem;">
+                            <option value="Beginner" {% if user.experience=="Beginner" %}selected{% endif %}>Beginner
+                            </option>
+                            <option value="Intermediate" {% if user.experience=="Intermediate" %}selected{% endif %}>
+                                Intermediate</option>
+                            <option value="Advanced" {% if user.experience=="Advanced" %}selected{% endif %}>Advanced
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <a href="/home" class="btn-signin"
+                        style="background: #f1f5f9; color: #475569; text-decoration: none; display: flex; align-items: center; justify-content: center;">Cancel</a>
+                    <button type="submit" class="btn-signin" style="flex: 2;">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

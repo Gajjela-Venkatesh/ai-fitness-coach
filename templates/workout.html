@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="workout-plan">
+    <div class="workout-header"
+        style="text-align: center; margin-bottom: 3rem; padding: 3rem 0; background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%); border-radius: 24px; position: relative;">
+        <a href="/home"
+            style="position: absolute; top: 1.5rem; left: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: transform 0.2s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Dashboard
+        </a>
+        <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">Your Personalized
+            Plan</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem;">Tailored to your goals, equipment, and experience.</p>
+    </div>
+
+    <div class="plan-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 4rem;">
+        {% if workout_plan %}
+        {% for day, details in workout_plan.items() %}
+        <div class="day-card"
+            style="background: #fff; border-radius: 20px; border: 1px solid var(--border-color); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: var(--card-shadow); display: flex; flex-direction: column;">
+
+            {% if "Rest" in details.type %}
+            <!-- Rest Day Header -->
+            <div class="card-header"
+                style="background: #f1f5f9; padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #64748b; margin: 0;">{{ day }}</h3>
+                    <span
+                        style="background: #e2e8f0; color: #475569; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Recovery</span>
+                </div>
+            </div>
+            <div class="card-body"
+                style="padding: 2rem; flex-grow: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 200px;">
+                <div>
+                    <svg class="icon" style="width: 48px; height: 48px; color: #94a3b8; margin-bottom: 1rem;"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    <p style="color: #64748b; font-weight: 500; font-size: 1.1rem; margin: 0;">Rest & Recovery Day</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem;">Light stretching or walking
+                        recommended.</p>
+                </div>
+            </div>
+            {% else %}
+            <!-- Workout Day Header -->
+            <div class="card-header"
+                style="background: #fff; padding: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-color); margin: 0;">{{ day }}
+                    </h3>
+                    <span
+                        style="background: rgba(0, 118, 255, 0.1); color: var(--primary); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">{{
+                        details.type }}</span>
+                </div>
+            </div>
+            <div class="card-body" style="padding: 0;">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    {% for exercise in details.exercises %}
+                    <li
+                        style="padding: 1.25rem 1.5rem; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="margin-right: 1rem;">
+                            <div
+                                style="font-weight: 700; color: var(--text-color); font-size: 1rem; margin-bottom: 0.2rem;">
+                                {{ exercise.exercise }}</div>
+                            {% if exercise.notes %}
+                            <div style="font-size: 0.85rem; color: #64748b; font-style: italic;">{{ exercise.notes }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div style="text-align: right; min-width: 80px;">
+                            <div style="font-weight: 700; color: var(--primary); font-size: 1.1rem;">{{ exercise.sets }}
+                                x {{ exercise.reps }}</div>
+                            <div
+                                style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; font-weight: 600;">
+                                Sets x Reps</div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; background: #fff; border-radius: 20px;">
+            {% if error %}
+            <p style="color: #ef4444; font-size: 1.2rem; font-weight: 600;">{{ error }}</p>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Please check back later or contact support.</p>
+            {% else %}
+            <p style="color: var(--text-muted); font-size: 1.2rem;">No workout plan available yet. Proceed to generate
+                one!</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="feedback-section"
+        style="margin-top: 4rem; padding: 3rem; background: #fff; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0,0,0,0.03); max-width: 900px; margin-left: auto; margin-right: auto;">
+        <h3
+            style="margin-bottom: 0.5rem; text-align: center; font-size: 1.75rem; font-weight: 800; color: var(--text-color);">
+            How was your workout today?</h3>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.05rem;">Help your AI
+            coach adjust the intensity for your next session.</p>
+
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+            <!-- Easy -->
+            <form action="/api/feedback" method="post" style="margin: 0;">
+                <input type="hidden" name="feedback" value="Easy">
+                <button type="submit" class="feedback-card easy">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m5 12 7-7 7 7"></path>
+                            <path d="M12 19V5"></path>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <span class="label">Easy</span>
+                        <span class="desc">Could have done more</span>
+                    </div>
+                </button>
+            </form>
+
+            <!-- Moderate -->
+            <form action="/api/feedback" method="post" style="margin: 0;">
+                <input type="hidden" name="feedback" value="Moderate">
+                <button type="submit" class="feedback-card optimal">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"></path>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <span class="label">Moderate</span>
+                        <span class="desc">Challenging but manageable</span>
+                    </div>
+                </button>
+            </form>
+
+            <!-- Hard -->
+            <form action="/api/feedback" method="post" style="margin: 0;">
+                <input type="hidden" name="feedback" value="Hard">
+                <button type="submit" class="feedback-card hard">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 9v4"></path>
+                            <path d="m12 17 .01 0"></path>
+                            <path d="m3.34 19 8.66-15 8.66 15z"></path>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <span class="label">Hard</span>
+                        <span class="desc">Struggled to complete sets</span>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .day-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .feedback-card {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem;
+        background: #fff;
+        border: 2px solid #f1f5f9;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: left;
+    }
+
+    .feedback-card .icon-box {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        transition: all 0.25s ease;
+    }
+
+    .feedback-card .card-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feedback-card .label {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .feedback-card .desc {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+
+    /* Hard State */
+    .feedback-card.hard .icon-box {
+        background: #fee2e2;
+        color: #ef4444;
+    }
+
+    .feedback-card.hard:hover {
+        border-color: #ef4444;
+        background: #fff1f2;
+    }
+
+    .feedback-card.hard:hover .icon-box {
+        background: #ef4444;
+        color: #fff;
+    }
+
+    /* Optimal State */
+    .feedback-card.optimal .icon-box {
+        background: #dcfce7;
+        color: #16a34a;
+    }
+
+    .feedback-card.optimal:hover {
+        border-color: #16a34a;
+        background: #f0fdf4;
+    }
+
+    .feedback-card.optimal:hover .icon-box {
+        background: #16a34a;
+        color: #fff;
+    }
+
+    /* Easy State */
+    .feedback-card.easy .icon-box {
+        background: #fef9c3;
+        color: #ca8a04;
+    }
+
+    .feedback-card.easy:hover {
+        border-color: #ca8a04;
+        background: #fefce8;
+    }
+
+    .feedback-card.easy:hover .icon-box {
+        background: #ca8a04;
+        color: #fff;
+    }
+
+    .feedback-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{% endblock %}

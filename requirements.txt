@@ -1,0 +1,10 @@
+fastapi>=0.68.0
+uvicorn>=0.15.0
+python-multipart
+google-generativeai
+transformers
+gtts
+python-dotenv
+jinja2
+sqlalchemy
+passlib[bcrypt]

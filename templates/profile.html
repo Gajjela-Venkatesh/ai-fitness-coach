@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ user.username }}'s Profile</h2>
+<ul>
+    <li><strong>Age:</strong> {{ user.age }}</li>
+    <li><strong>Gender:</strong> {{ user.gender }}</li>
+    <li><strong>Goal:</strong> {{ user.goal }}</li>
+    <li><strong>Equipment:</strong> {{ user.equipment | join(", ") }}</li>
+    <li><strong>Environment:</strong> {{ user.environment }}</li>
+    <li><strong>Experience:</strong> {{ user.experience }}</li>
+</ul>
+<form action="/api/generate-workout" method="post">
+    <input type="hidden" name="username" value="{{ user.username }}">
+    <button type="submit" class="btn">Generate Workout Plan</button>
+</form>
+{% endblock %}
